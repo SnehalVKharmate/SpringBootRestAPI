@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+
+<title>StudentInformation</title>
+<script type="text/javascript">
+function del() 
+{
+	document.myform.action="delete";
+	document.myform.submit();
+}
+
+function edit() 
+{
+	document.myform.action="edit";
+	document.myform.submit();
+}
+</script> 
+<style>
+table,th,td
+{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+</style>
+
+
+</head>
+<body>
+<form name="myform">
+<table style="width:100%">
+<h1>StudentInfo</h1>
+<tr> 
+<th>Select</th>
+<th>User name</th>
+<th>Password</th>
+<th>Name</th>
+<th>Email</th>
+<th>Address</th>
+</tr>
+  <%List<Student> arr=(List<Student>) request.getAttribute("stud");
+
+for(Student stud:arr)
+{ %>
+<%-- <c:forEach items="="${listStudent}" var="stud">
+ --%><tr>
+<td><input type="radio" name="id" value="<%=stud.getId()%>">select</td>
+
+<td><%=stud.getUname()%></td>
+ 
+<td><%=stud.getPass()%></td>
+<td><%=stud.getName() %></td>
+<td><%=stud.getEmail() %></td>
+<td><%=stud.getAddress() %></td>
+ </tr>
+ <% }%>
+</table>
+<input type="button" value="Delete" onclick="del()">
+<input type="button" value="Edit" onclick="edit()"> 
+</form>
+</body>
+
+</html>
